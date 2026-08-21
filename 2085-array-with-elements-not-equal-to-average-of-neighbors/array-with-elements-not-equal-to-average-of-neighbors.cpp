@@ -1,16 +1,17 @@
 class Solution {
 public:
     vector<int> rearrangeArray(vector<int>& nums) {
-        sort(nums.begin(),nums.end());
-        vector<int>result(nums.size());
-        int i=0 , j=0;
-        for(;i<nums.size()&&j<nums.size(); i++ , j+=2){
-            result[j] = nums[i];
+        int n = nums.size();
+        for(int i=1; i<n-1; i++){
+            if(2*nums[i] == (nums[i-1]+nums[i+1])){
+                swap(nums[i],nums[i+1]);
+            }
         }
-        j=1;
-        for(;i<nums.size() && j<nums.size(); i++ , j+=2){
-            result[j] = nums[i];
+        for(int i=n-2; i>0; i--){
+            if(2*nums[i] == (nums[i-1]+nums[i+1])){
+                swap(nums[i],nums[i+1]);
+            }
         }
-        return result;
+        return nums;
     }
 };
