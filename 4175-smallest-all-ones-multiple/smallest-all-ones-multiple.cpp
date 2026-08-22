@@ -1,23 +1,11 @@
 class Solution {
 public:
     int minAllOneMultiple(int k) {
-        int cnt = 1;
-        unordered_set<int>s;
-        int rem = 1%k;
-        while(1){
-            if(s.find(rem)!=s.end()){
-                return -1;
-            }
-            else{
-                s.insert(rem);
-            }
-
-            if(rem==0){
-                return cnt;
-            }
-
+        if(k%2==0 || k%5==0) return -1;
+        int rem = 0;
+        for(int i=1; i<=k; i++){
             rem = ((rem*10)+1)%k;
-            cnt++;
+            if(rem==0) return i;
         }
         return -1;
     }
