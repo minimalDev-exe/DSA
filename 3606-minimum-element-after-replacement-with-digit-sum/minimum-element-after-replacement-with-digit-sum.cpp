@@ -10,7 +10,6 @@ public:
             }
             nums[i] = digitSum;
         }
-        int minNum = *std::min_element(nums.begin(), nums.end());
-        return minNum;
+        return *std::min_element(nums.begin(), nums.end());
     }
 };
