@@ -11,30 +11,23 @@
  */
 class Solution {
 public:
+    int ans = 0;
+
     int averageOfSubtree(TreeNode* root) {
-        if(!root) return 0;
-        int ans = 0;
-        if(root->val == sum(root)/count(root)){
-            ans++;
-        }
+        averageOfNode(root);
+        return ans;
+    }
+
+    pair<int,int> averageOfNode(TreeNode* root){
+        if(!root) return {0,0};
+        auto left = averageOfNode(root->left);
+        auto right = averageOfNode(root->right);
         
-        int rightAns = averageOfSubtree(root->left);
-        int leftAns = averageOfSubtree(root->right);
+        int totalSum = root->val + left.first + right.first;
+        int totalCnt = 1 + left.second + right.second;
 
-        return ans+rightAns+leftAns;
-    }
+        if(root->val == totalSum/totalCnt) ans++;
 
-    int sum(TreeNode* root){
-        if(!root) return 0;
-        int rightSum = sum(root->right);
-        int leftSum = sum(root->left);
-        return root->val + rightSum + leftSum;
-    }
-
-    int count(TreeNode* root){
-        if(!root) return 0;
-        int rightCnt = count(root->right);
-        int leftCnt = count(root->left);
-        return rightCnt + leftCnt + 1;
+        return {totalSum , totalCnt};
     }
 };
