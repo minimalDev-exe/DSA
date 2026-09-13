@@ -13,6 +13,7 @@ public:
                 for(int i=0; i<val.second.size()-1; i++){
                     if(val.second[i+1]-val.second[i]!=diff){
                         special = false;
+                        break;
                     }
                 }
                 if(special) ans++;
