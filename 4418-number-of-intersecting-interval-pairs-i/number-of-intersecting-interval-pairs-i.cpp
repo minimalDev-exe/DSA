@@ -4,10 +4,9 @@ public:
         int ans = 0;
         for(int i=0; i<intervals.size()-1; i++){
             for(int j=i+1; j<intervals.size(); j++){
-                if(intervals[i][1]<intervals[j][0] || intervals[j][1]<intervals[i][0]){
-                    continue;
+                if(max(intervals[i][0],intervals[j][0]) <= min(intervals[i][1],intervals[j][1])){
+                    ans++;
                 }
-                else ans++;
             }
         }
         return ans;
