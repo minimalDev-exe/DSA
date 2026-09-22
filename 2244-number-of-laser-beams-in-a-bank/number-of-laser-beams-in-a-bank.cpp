@@ -10,13 +10,15 @@ public:
             }
             laserCnt.push_back(cnt);
         }
-        int prev = 0 , curr = 0;
-        for(int i=0; i<laserCnt.size(); i++){
-            if(laserCnt[i]!=0){
-            curr = laserCnt[i];
-            ans += prev*curr;
-            prev = curr;
+        int j=1;
+        for(int i=0; i<laserCnt.size()-1; i++){
+            while(laserCnt[j]==0 && j<laserCnt.size()-1) j++;
+            ans += laserCnt[i]*laserCnt[j];
+            if(j<laserCnt.size()-1){
+                i = j-1;
+                j++;
             }
+            else break;
         }
         return ans;
     }
