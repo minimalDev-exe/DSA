@@ -4,24 +4,15 @@ public:
         long long ans = 0;
         int n = nums.size();
         for(int i=0; i<n; i++){
-            nums[i]=abs(nums[i]);
+            nums[i]=nums[i]*nums[i];
         }
         sort(nums.begin(),nums.end());
-        vector<int>vec(n);
-        int st = 0 , end = n-1;
-        for(int i=0; i<n; i++){
-            if(i%2==0){
-                vec[i]=nums[end];
-                ans+=vec[i]*vec[i];
-                end--;
-            }
-            else{
-                vec[i]=nums[st];
-                ans-=vec[i]*vec[i];
-                st++;
-            }
+        for(int i=0; i<n/2; i++){
+            ans-=nums[i];
         }
-        
+        for(int i=n/2; i<n; i++){
+            ans+=nums[i];
+        }
         return ans;
     }
 };
