@@ -1,7 +1,7 @@
 class Solution {
 public:
     int longestOnes(vector<int>& nums, int k) {
-        int cnt_0 = 0 , ans = INT_MIN , lt = 0;
+        int cnt_0 = 0 , ans = 0 , lt = 0;
         for(int rt=0; rt<nums.size(); rt++){
             if(nums[rt]==0) cnt_0++;
 
